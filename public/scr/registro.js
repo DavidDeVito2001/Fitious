@@ -1,8 +1,11 @@
+
+const mensajeError = document.getElementsByClassName("error")[0];
+
 //Agarramos el elemento id = register-form, sumamos un elemento submit porque es a todo el form.
 //Hago una función flecha y le paso el paramentro "e" el cual es el evento de todo esto.
 document.getElementById('register-form').addEventListener('submit',async(e)=>{  
     e.preventDefault(); 
-    const respuesta = await fetch('http://localhost:3000/api/registro',{
+    const res = await fetch('http://localhost:3000/api/registro',{
         method : "POST",
         headers : {
             "Content-Type": "application/json",
@@ -13,4 +16,10 @@ document.getElementById('register-form').addEventListener('submit',async(e)=>{
             password : e.target.children.password.value
         })
     });
+    if(!res.ok) return mensajeError.classList.toggle("escondido",false);
+    const resJson = await res.json();
+    if(resJson.redirect){
+        window.location.href = resJson.redirect;    
+    }
+
 });

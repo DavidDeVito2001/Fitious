@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para usuarios registrados</title>
+    <link rel="stylesheet" href="../recursos/css/style.css">
+    <script src="script.js"></script>
+    <script src="../recursos/scr/admin.js" defer></script>
+</head>
+<body>
+    <h1>Clases:</h1>
+    <div>
+      <ul>
+        <% listaDatosPriv.forEach((dato) => { %>
+          <li><%= `${dato}` %></li>
+        <% }); %>
+      </ul>
+    </div>
+    <p><a href="info">Información Personal</a></p>
+    <div id="form-container">
+        <h1>¡BIENVENIDO, TU SESIÓN INICIO CORRECTAMENTE!</h1>
+        <button>Cerrar Sesión</button>
+    </div>
+</body>
+</html>
